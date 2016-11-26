@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="../../static/user_profile/style.css">
+</head>
+<body>
+
+    <div class="conteiner">
+        <h2>{{ user.name }}</h2>
+        <h3>{{ user.username }}</h3>
+        <p>{{ user.email }}</p>
+        {% for item in exam %}
+            <ul>
+                <li><a href="{% url 'user_profile:writing' user.username item.id %}">{{ item.title }}</a></li>
+            </ul>
+        {% endfor %}
+    </div>
+
+
+</body>
+</html>
