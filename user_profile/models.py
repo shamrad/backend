@@ -1,6 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.db import models
 
+
 class Member(models.Model):
     name=models.CharField(max_length=20)
     username=models.CharField(max_length=20)
