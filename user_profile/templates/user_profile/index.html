@@ -1,9 +1,8 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <link type="text/css" rel="stylesheet" href="../../static/user_profile/style.css">
+{#    <link type="text/css" rel="stylesheet" href="../../static/user_profile/style.css">#}
 </head>
 <body>
 
@@ -13,13 +12,13 @@
         <p>{{ user.email }}</p>
         {% for item in exam %}
             <ul>
-                <li><a href="{% url 'user_profile:writing' user.username item.id %}">{{ item.title }}</a><p>-</p><a href="{% url 'user_profile:writing-dlt' user.username item.id %}">delete</a></li>
+                <li><a href="{% url 'user_profile:writing' user.username item.id %}">{{ item.title }}</a></li>
             </ul>
         {% endfor %}
     </div>
 
     <br>
     <br>
-    <a href="{% url 'user_profile:edit' user.pk %}">edit profil</a>
+{#    <a href="{% url 'user_profile:edit' user.pk %}">edit profil</a>#}
 </body>
 </html>

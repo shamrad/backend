@@ -1,16 +1,11 @@
 from django.conf.urls import url,include
-from . import views
+from .views import UserFormView, index, LoginView, writing, CreateWriting
 
 app_name='user_profile'
 urlpatterns = [
-    url(r'^(?P<username>[a-zA-Z0-9_.]{4,})/$', views.index, name='index'),
-    url(r'^(?P<username>[a-zA-Z0-9_.]{4,})/(?P<pk>[0-9])/$', views.writing, name='writing'),
-    url(r'^(?P<username>[a-zA-Z0-9_.]{4,})/(?P<pk>[0-9])/delete/$', views.WritingDelete.as_view(), name='writing-dlt'),
-
-
-    url(r'^(?P<username>[a-zA-Z0-9_.]{4,})/addnew/$', views.CreateWriting.as_view(), name='newriting'),
-    # pk inja baraye membre
-    url(r'^(?P<pk>[0-9])/edit/$', views.EditStu.as_view(), name='edit'),
-    url(r'^$', views.CreateStu.as_view(), name='newstu'),
-
+    url(r'^register/', UserFormView.as_view(), name='register'),
+    url(r'^login/', LoginView.as_view(), name='login'),
+    url(r'^(?P<username>[a-zA-Z0-9_.]{4,})/$', index, name='index'),
+    url(r'^(?P<username>[a-zA-Z0-9_.]{4,})/(?P<pk>[0-9])/$', writing, name='writing'),
+    url(r'^(?P<username>[a-zA-Z0-9_.]{4,})/addnew/$', CreateWriting.as_view(), name='newriting'),
 ]
