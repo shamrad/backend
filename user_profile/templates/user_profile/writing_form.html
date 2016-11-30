@@ -1,18 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <form action="" method="post" enctype="multipart/form-data">
+{% extends "user_profile/base.html" %}
+{% load static %}
+
+{% block title %}
+    New Writing
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+    <h3>Submit your new Writing to be corrected!</h3>
+    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {% for field in form %}
-            <span>{{ field.errors }}</span>
-            <label>{{ field.label_tag }}</label>
-            <div>{{ field }}</div>
-        {% endfor %}
-        <button type="submit">submit</button>
+        <div class="form-group">
+        <label for="txttitle" class="col-sm-2 control-label">Title</label>
+        <div class="col-sm-10">
+        <input class="form-control" id="txttitle" placeholder="Enter the title">
+        </div>
+        </div>
+        <textarea class="form-control col-sm-offset-1" rows="15" placeholder="Enter your text here..."></textarea>
+        <br>
+        <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-10">
+          <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+        </div>
     </form>
-</body>
-</html>
+    </div>
+{% endblock %}
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Sign in</button>
+    </div>
+  </div>
+</form>

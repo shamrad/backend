@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome {% block title %}{% endblock %} </title>
+    <title>{% block title %}{% endblock %} </title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -46,8 +46,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="Main">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Profile <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Submit a new Sample</a></li>
+                <li class="active"><a href="{% url 'user_profile:index' user.username %}">Profile <span class="sr-only">(current)</span></a></li>
+                <li><a href="{% url 'user_profile:newriting' user.username %}">Submit a new Sample</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
                     <ul class="dropdown-menu">

@@ -1,14 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>
-    {{ object.text }}
+{% extends "user_profile/base.html" %}
+{% load static %}
 
-</p>
-<h1>{{ object.score }}</h1>
-</body>
-</html>
+{% block title %}
+{{ object.title }} by {{ object.author }}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+    <h2 class="text-info">{{ object.title }} by {{ object.author }}</h2>
+
+    <p>
+    {{ object.text }}
+    </p>
+<br>
+<label>Score: {{ object.score }}</label>
+    </div>
+{% endblock %}
