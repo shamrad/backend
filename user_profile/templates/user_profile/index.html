@@ -1,24 +1,63 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
+{% extends "user_profile/base.html" %}
+{% load static %}
+{#<!DOCTYPE html>#}
+{#<html lang="en" xmlns="http://www.w3.org/1999/html">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
 {#    <link type="text/css" rel="stylesheet" href="../../static/user_profile/style.css">#}
-</head>
-<body>
-
-    <div class="conteiner">
+{#</head>#}
+{#<body>#}
+{% block title %}
+    {{ user.username }}
+{% endblock %}
+{% block content %}
+    <div class="container">
         <h2>{{ user.name }}</h2>
         <h3>{{ user.username }}</h3>
         <p>{{ user.email }}</p>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
         {% for item in exam %}
-            <ul>
-                <li><a href="{% url 'user_profile:writing' user.username item.id %}">{{ item.title }}</a></li>
-            </ul>
+            <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading_{{ forloop.counter }}">
+                      <h4 class="panel-title"></h4>
+{#                            <a href="{% url 'user_profile:writing' user.username item.id %}">{{ item.title }}</a>#}
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{ forloop.counter }}" aria-expanded="true" aria-controls="collapse_{{ forloop.counter }}">
+                            {{ item.title }}
+                            </a>
+                      </h4>
+            </div>
+            <div id="collapse_{{ forloop.counter }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_{{ forloop.counter }}">
+              <div class="panel-body">
+                  {{ item.text }}
+              </div>
+            </div>
+            </div>
         {% endfor %}
+        </div>
     </div>
 
-    <br>
-    <br>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        {{ writing.title }}
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+          {{ writing.text }}
+      </div>
+    </div>
+  </div>
+    </div>
+
+
+
+
+{% endblock %}
 {#    <a href="{% url 'user_profile:edit' user.pk %}">edit profil</a>#}
-</body>
-</html>
+{#</body>#}
+{#</html>#}
+
